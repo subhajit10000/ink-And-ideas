@@ -1,0 +1,16 @@
+import {Router} from "express";
+import authMiddleware from "../middlewares/auth.middleware.js";
+import authorize from "../middlewares/role.middleware.js";
+import {listPosts,createPost,updatePost,deletePost,adminActivity,toggleLike,addComment,deleteComment} from "../controllers/post.controller.js";
+import optionalAuth from "../middlewares/optionalAuth.middleware.js";
+import upload from "../middlewares/upload.middleware.js";
+const router=Router();
+router.get("/",optionalAuth,listPosts);
+router.get("/admin/activity",authMiddleware,authorize("admin"),adminActivity);
+router.post("/",authMiddleware,upload.single("image"),createPost);
+router.patch("/:id",authMiddleware,upload.single("image"),updatePost);
+router.delete("/:id",authMiddleware,deletePost);
+router.post("/:id/like",authMiddleware,toggleLike);
+router.post("/:id/comments",authMiddleware,addComment);
+router.delete("/:id/comments/:commentId",authMiddleware,deleteComment);
+export default router;
