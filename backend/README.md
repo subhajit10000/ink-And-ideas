@@ -8,3 +8,21 @@
 5. Run `npm start`. A sample configuration is provided in `.env.example`; copy it to `.env` and replace all placeholder secrets.
 
 The API base URL is `http://localhost:5001/api/v1` by default. Public posts can be read without authentication. Creating/editing posts and profile changes require a bearer access token. Users may edit their own posts; admins may delete any post.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. when a particular user delete his/her own post, its still there in explore section. fix it.
+2. when a user found through search bar, then his/her profile will open in a new page after clicking "open writer page" containing only his/her post. 
